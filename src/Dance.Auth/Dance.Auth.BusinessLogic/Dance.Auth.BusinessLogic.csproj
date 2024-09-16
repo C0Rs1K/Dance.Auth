@@ -8,8 +8,8 @@
 
   <ItemGroup>
     <Folder Include="Configuration\" />
-    <Folder Include="Context\" />
-    <Folder Include="Migrations\" />
+    <Folder Include="Dtos\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Services\Interfaces\" />
   </ItemGroup>
-
 </Project>
