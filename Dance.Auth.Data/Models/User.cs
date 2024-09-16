@@ -1,6 +1,8 @@
-﻿namespace Dance.Auth.Data.Models;
+﻿using Microsoft.AspNetCore.Identity;
 
-public class User 
+namespace Dance.Auth.Data.Models;
+
+public class User : IdentityUser<Guid>
 {
-
+    public string Name { get; set; }
 }
