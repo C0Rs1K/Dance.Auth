@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dance.Auth.Api", "Dance.Auth.Api\Dance.Auth.Api.csproj", "{85CED4F8-3142-461C-8A3F-25F724D0C291}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dance.Auth.Api", "Dance.Auth.Api\Dance.Auth.Api.csproj", "{85CED4F8-3142-461C-8A3F-25F724D0C291}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dance.Auth.Business", "Dance.Auth.Business\Dance.Auth.Business.csproj", "{22F22B1C-DFE3-471B-800C-260D44EE2203}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dance.Auth.BusinessLogic", "Dance.Auth.Business\Dance.Auth.BusinessLogic.csproj", "{22F22B1C-DFE3-471B-800C-260D44EE2203}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dance.Auth.Data", "Dance.Auth.Data\Dance.Auth.Data.csproj", "{264F35FB-DAE9-448F-BA7F-CD9A16CD1A5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dance.Auth.DataAccess", "Dance.Auth.Data\Dance.Auth.DataAccess.csproj", "{264F35FB-DAE9-448F-BA7F-CD9A16CD1A5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
