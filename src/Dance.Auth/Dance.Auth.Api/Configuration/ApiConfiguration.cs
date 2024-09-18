@@ -1,4 +1,4 @@
-﻿using Dance.Auth.Data.Configuration;
+using Dance.Auth.Data.Configuration;
 
 namespace Dance.Auth.Api.Configuration;
 
@@ -7,7 +7,8 @@ public static class ApiConfiguration
     public static WebApplicationBuilder ConfigureWebApplicationBuilder(this WebApplicationBuilder builder)
     {
         builder.AddDatabase();
-        builder.Services.AddApplicationServices();
+        builder.Services.AddApplicationServices()
+            .AddIdentityServices();
 
         return builder;
     }
@@ -38,6 +39,13 @@ public static class ApiConfiguration
         services.AddControllers();
         return services.AddEndpointsApiExplorer()
             .AddSwaggerGen();
+    }
+    
+    private static IServiceCollection AddIdentityServices(this IServiceCollection services)
+    {
+        services.AddIdentity<User, IdentityRole<Guid>>()
+            .AddEntityFrameworkStores<DanceAuthContext>()
+            .AddDefaultTokenProviders();
     }
 
     private static WebApplicationBuilder AddDatabase(this WebApplicationBuilder builder)
