@@ -1,4 +1,5 @@
 using Dance.Auth.Data.Configuration;
+using Dance.Auth.Business.Configuration;
 
 namespace Dance.Auth.Api.Configuration;
 
@@ -8,6 +9,7 @@ public static class ApiConfiguration
     {
         builder.AddDatabase();
         builder.Services.AddApplicationServices()
+            .ConfigureAutoFluentValidation()
             .AddIdentityServices();
 
         return builder;
@@ -37,6 +39,7 @@ public static class ApiConfiguration
     private static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
         services.AddControllers();
+        services.AddExceptionHandler<HttpGlobalExceptionHandler>();
         return services.AddEndpointsApiExplorer()
             .AddSwaggerGen();
     }

@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Dance.Auth.Data\Dance.Auth.Data.csproj" />
+    <ProjectReference Include="..\Dance.Auth.BusinessLogic\Dance.Auth.BusinessLogic.csproj" />
   </ItemGroup>
 
 </Project>
