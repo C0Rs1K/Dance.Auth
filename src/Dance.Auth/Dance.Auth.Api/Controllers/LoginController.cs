@@ -1,12 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
 
 namespace Dance.Auth.Api.Controllers;
 
-public class LoginController : Controller
+[ApiController]
+[Route("api")]
+public class LoginController(ILoginService loginService) : ControllerBase
 {
-    // GET
-    public IActionResult Index()
+    [HttpPost("Login")]
+    public async Task<IActionResult> Login([FromBody] LoginRequestDto registrationRequest, [FromQuery] bool? useCookies, [FromQuery] bool? useSessionCookies)
     {
-        return View();
+        await loginService.Login(registrationRequest, useCookies, useSessionCookies);
+        // The signInManager already produced the needed response.
+        return this.Empty;
+    }
+        [HttpPost("Login")]
+    public async Task<IActionResult> Logout()
+    {
+        await loginService.Logout();
+        return Ok();
     }
 }
