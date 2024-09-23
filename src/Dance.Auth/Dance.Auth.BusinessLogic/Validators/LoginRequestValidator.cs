@@ -1,6 +1,7 @@
-﻿using FluentValidation;
+﻿using Dance.Auth.BusinessLogic.Dtos;
+using FluentValidation;
 
-namespace Dance.Auth.Business.Validators;
+namespace Dance.Auth.BusinessLogic.Validators;
 
 public class LoginRequestValidator : AbstractValidator<LoginRequestDto>
 {

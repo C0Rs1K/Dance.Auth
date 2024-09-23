@@ -1,19 +1,17 @@
-using System.Security.Claims;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
+using Dance.Auth.BusinessLogic.Dtos;
+using Dance.Auth.BusinessLogic.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dance.Auth.Api.Controllers;
 
 [ApiController]
 [Route("api")]
-public class LoginController(IRegistrationService registrationService) : ControllerBase
+public class RegistrationController(IRegistrationService registrationService) : ControllerBase
 {
     [HttpPost("Register")]
-    public async Task<IActionResult> Register([FromBody] RegistrationRequestDto registrationRequest)
+    public async Task<IActionResult> Register([FromBody] RegistrationRequestDto registrationRequest, CancellationToken cancellationToken)
     {
-        await registrationService.RegisterUser(registrationRequest);
+        await registrationService.RegisterUserAsync(registrationRequest, cancellationToken);
         return Ok();
     }
 }

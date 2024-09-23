@@ -1,7 +1,9 @@
-namespace Dance.Auth.Business.Services.Interfaces;
+using Dance.Auth.BusinessLogic.Dtos;
+
+namespace Dance.Auth.BusinessLogic.Services.Interfaces;
 
 public interface ILoginService
 {
-    Task Login(LoginRequestDto registrationRequest, bool? useCookies, bool? useSessionCookies);
-    Task Logout();
+    Task LoginAsync(LoginRequestDto registrationRequest, bool? useCookies, bool? useSessionCookies);
+    Task LogoutAsync();
 }

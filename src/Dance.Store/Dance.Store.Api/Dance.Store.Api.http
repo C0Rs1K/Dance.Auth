@@ -1,0 +1,6 @@
+@Dance.Store.Api_HostAddress = http://localhost:5162
+
+GET {{Dance.Store.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,43 +1,31 @@
-﻿using Dance.Auth.Data.Models;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Text.Encodings.Web;
-using Microsoft.AspNetCore.Authentication.BearerToken;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Http.Metadata;
+﻿using Dance.Auth.BusinessLogic.Dtos;
+using Dance.Auth.BusinessLogic.Exceptions;
+using Dance.Auth.BusinessLogic.Services.Interfaces;
+using Dance.Auth.DataAccess.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.Data;
-using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 
-namespace Dance.Auth.Business.Services;
+namespace Dance.Auth.BusinessLogic.Services;
 
 public class RegistrationService(UserManager<User> userManager, IUserStore<User> userStore) : IRegistrationService
 {
-    public Task RegisterUser(RegistrationRequestDto registrationRequest, CancellationToken cancellationToken)
+    public async Task RegisterUserAsync(RegistrationRequestDto registrationRequest, CancellationToken cancellationToken)
     {
-        var emailStore = (IUserEmailStore<TUser>)userStore;
+        var emailStore = (IUserEmailStore<User>)userStore;
         var email = registrationRequest.Email;
         
         var user = new User();
         await userStore.SetUserNameAsync(user, email, cancellationToken);
         await emailStore.SetEmailAsync(user, email, cancellationToken);
+        user.Name = registrationRequest.Name;
 
         var result = await userManager.CreateAsync(user, registrationRequest.Password);
-
+            
         if (!result.Succeeded)
         {
-            throw new BadRequestException("Error occured while creating user")
+            throw new BadRequestException($"Error occured while creating user: {string.Join(";\n", 
+                result.Errors.Select(x => x.Description))}");
         }
-        else
-        {
-            userManager.AddToRole(user.Id, "User")
-        }
+        
+        await userManager.AddToRoleAsync(user, "User");
     }
 }

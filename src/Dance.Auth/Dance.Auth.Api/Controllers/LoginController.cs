@@ -1,6 +1,5 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Authentication;
+﻿using Dance.Auth.BusinessLogic.Dtos;
+using Dance.Auth.BusinessLogic.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,14 +13,15 @@ public class LoginController(ILoginService loginService) : ControllerBase
     [HttpPost("Login")]
     public async Task<IActionResult> Login([FromBody] LoginRequestDto registrationRequest, [FromQuery] bool? useCookies, [FromQuery] bool? useSessionCookies)
     {
-        await loginService.Login(registrationRequest, useCookies, useSessionCookies);
+        await loginService.LoginAsync(registrationRequest, useCookies, useSessionCookies);
         // The signInManager already produced the needed response.
-        return this.Empty;
+        return Empty;
     }
-        [HttpPost("Login")]
+
+    [HttpPost("Logout")]
     public async Task<IActionResult> Logout()
     {
-        await loginService.Logout();
+        await loginService.LogoutAsync();
         return Ok();
     }
 }
