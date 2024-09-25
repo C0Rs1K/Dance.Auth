@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Dance.Auth.Api.Controllers;
 
 [ApiController]
-[Route("api")]
+[Route("api/[controller]")]
 public class LoginController(ILoginService loginService) : ControllerBase
 {
     [HttpPost("Login")]

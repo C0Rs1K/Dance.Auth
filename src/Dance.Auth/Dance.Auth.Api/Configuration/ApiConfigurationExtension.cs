@@ -10,7 +10,7 @@ using Swashbuckle.AspNetCore.Filters;
 
 namespace Dance.Auth.Api.Configuration;
 
-public static class ApiConfiguration
+public static class ApiConfigurationExtension
 {
     public static WebApplicationBuilder ConfigureWebApplicationBuilder(this WebApplicationBuilder builder)
     {

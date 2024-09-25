@@ -7,7 +7,7 @@ using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 
 namespace Dance.Auth.BusinessLogic.Configuration;
 
-public static class BusinessConfiguration
+public static class BusinessConfigurationExtension
 {
     public static IServiceCollection ConfigureAutoFluentValidation(this IServiceCollection services)
     {

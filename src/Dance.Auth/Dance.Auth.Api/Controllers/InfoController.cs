@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Dance.Auth.Api.Controllers
 {   
-    [Route("api")]
+    [Route("api/[controller]")]
     [ApiController]
     public class InfoController(IInfoService infoService) : ControllerBase
     {
