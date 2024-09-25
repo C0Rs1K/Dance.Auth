@@ -1,4 +1,5 @@
 ﻿using Dance.Auth.BusinessLogic.Dtos;
+using Dance.Auth.BusinessLogic.Exceptions;
 using Dance.Auth.BusinessLogic.Services.Interfaces;
 using Dance.Auth.DataAccess.Models;
 using Microsoft.AspNetCore.Identity;
@@ -17,7 +18,7 @@ public class LoginService(SignInManager<User> signInManager) : ILoginService
 
         if (!result.Succeeded)
         {
-            throw new UnauthorizedAccessException("Incorrect username or password");
+            throw new UnauthorizedException("Incorrect username or password");
         }
     }
 
