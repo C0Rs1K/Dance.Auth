@@ -1,7 +1,11 @@
-﻿namespace Dance.Store.Domain.Entities;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class StudentEntity
+namespace Dance.Store.Domain.Entities;
+
+public class StudentEntity : BaseEntityWithName
 {
-    public string Instagram { get; set; }
+    [MaxLength(64)]
+    public string? Instagram { get; set; }
+    [MaxLength(16)]
     public string Phone { get; set; }
 }

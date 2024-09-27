@@ -1,6 +1,5 @@
-﻿namespace Dance.Store.Domain.Interfaces;
+﻿using Dance.Store.Domain.Entities;
 
-public interface IStudentRegistrationRepository
-{
-    
-}
+namespace Dance.Store.Domain.Interfaces;
+
+public interface IStudentRegistrationRepository : IBaseRepository<StudentRegistrationEntity>;

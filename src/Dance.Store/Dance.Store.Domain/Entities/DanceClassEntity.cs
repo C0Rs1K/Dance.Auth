@@ -1,4 +1,6 @@
-﻿namespace Dance.Store.Domain.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Dance.Store.Domain.Entities;
 
 public class DanceClassEntity : BaseEntityWithName
 {
@@ -6,7 +8,7 @@ public class DanceClassEntity : BaseEntityWithName
     public int  ClassDuration { get; set; }
     public int Price { get; set; }
     public int NumberOfPlaces { get; set; }
-    public string Description { get; set; }
+    public string? Description { get; set; }
     public DateTime Date { get; set; }
     public virtual TrainerEntity Trainer { get; set; }
 }
