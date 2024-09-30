@@ -12,6 +12,7 @@ public class RegistrationController(IRegistrationService registrationService) : 
     public async Task<IActionResult> Register([FromBody] RegistrationRequestDto registrationRequest, CancellationToken cancellationToken)
     {
         await registrationService.RegisterUserAsync(registrationRequest, cancellationToken);
+
         return Ok();
     }
 }

@@ -84,6 +84,7 @@ public static class ApiConfigurationExtension
     {
         var connectionString = builder.Configuration.GetConnectionString("Database");
         builder.Services.ConfigureDatabase(connectionString);
+
         return builder;
     }
 }

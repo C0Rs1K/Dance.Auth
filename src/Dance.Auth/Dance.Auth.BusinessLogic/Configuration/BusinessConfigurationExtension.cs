@@ -13,6 +13,7 @@ public static class BusinessConfigurationExtension
     {
         services.AddValidatorsFromAssembly(typeof(LoginRequestValidator).Assembly);
         services.AddFluentValidationAutoValidation(); 
+
         return services; 
     }
 
@@ -21,6 +22,7 @@ public static class BusinessConfigurationExtension
         services.AddScoped<ILoginService, LoginService>();
         services.AddScoped<IRegistrationService, RegistrationService>();
         services.AddScoped<IInfoService, InfoService>();
+
         return services;
     }
 }

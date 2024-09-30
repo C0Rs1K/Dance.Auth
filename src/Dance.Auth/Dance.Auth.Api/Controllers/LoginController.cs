@@ -1,6 +1,5 @@
 ﻿using Dance.Auth.BusinessLogic.Dtos;
 using Dance.Auth.BusinessLogic.Services.Interfaces;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -22,6 +21,7 @@ public class LoginController(ILoginService loginService) : ControllerBase
     public async Task<IActionResult> Logout()
     {
         await loginService.LogoutAsync();
+
         return Ok();
     }
 }

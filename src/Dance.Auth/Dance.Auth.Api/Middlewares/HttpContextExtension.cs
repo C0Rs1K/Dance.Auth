@@ -14,6 +14,7 @@ public static class HttpContextExtensions
 
         httpContext.Response.StatusCode = (int)statusCode;
         httpContext.Response.ContentType = "application/json";
+
         return httpContext.Response.WriteAsync(text);
     }
 }

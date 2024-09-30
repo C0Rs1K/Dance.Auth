@@ -13,6 +13,7 @@ namespace Dance.Auth.Api.Controllers
         public async Task<IActionResult> GetInfo()
         {
             var info = await infoService.GetUserInfo(User.Identity.Name);
+
             return Ok(info);
         }
     }
