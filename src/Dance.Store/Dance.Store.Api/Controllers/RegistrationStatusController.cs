@@ -39,6 +39,7 @@ namespace Dance.Store.Api.Controllers
             [FromBody] RegistrationStatusRequestDto registrationStatusRequestDto, CancellationToken cancellationToken)
         {
             await sender.Send(new UpdateRegistrationStatusCommand(registrationStatusId, registrationStatusRequestDto), cancellationToken);
+
             return NoContent();
         }
 
@@ -46,6 +47,7 @@ namespace Dance.Store.Api.Controllers
         public async Task<IActionResult> DeleteRegistrationStatusAsync(Guid registrationStatusId, CancellationToken cancellationToken)
         {
             await sender.Send(new DeleteRegistrationStatusCommand(registrationStatusId), cancellationToken);
+
             return NoContent();
         }
     }

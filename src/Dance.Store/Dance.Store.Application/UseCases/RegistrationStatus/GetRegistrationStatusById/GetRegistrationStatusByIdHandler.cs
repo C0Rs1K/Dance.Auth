@@ -11,8 +11,9 @@ public class GetRegistrationStatusByIdHandler(IRegistrationStatusRepository regi
     public async Task<RegistrationStatusResponseDto> Handle(GetRegistrationStatusByIdCommand request, CancellationToken cancellationToken)
     {
         var registrationStatus = await 
-            registrationStatusRepository.GetFirstAsync(x => x.Id == request.registrationStatusId, cancellationToken);
+            registrationStatusRepository.GetFirstAsync(x => x.Id == request.RegistrationStatusId, cancellationToken);
         NotFoundException.ThrowIfNull(registrationStatus);
+
         return mapper.Map<RegistrationStatusResponseDto>(registrationStatus);
     }
 }

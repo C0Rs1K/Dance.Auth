@@ -4,4 +4,4 @@ using Dance.Store.Infrastructure.Context;
 
 namespace Dance.Store.Infrastructure.Repositories;
 
-public class DanceClassRepository(DanceDbContext context) : BaseRepository<DanceClassEntity>(context), IDanceClassRepository;
+public class DanceClassRepository(DanceDbContext context) : BaseRepository<DanceClass>(context), IDanceClassRepository;

@@ -2,7 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using FluentValidation;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
-using AutoMapper;
 using Dance.Store.Application.UseCases.DanceClass.CreateDanceClass;
 using Dance.Store.Application.Validators;
 

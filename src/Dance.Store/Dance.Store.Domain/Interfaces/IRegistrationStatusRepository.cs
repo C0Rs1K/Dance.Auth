@@ -2,4 +2,4 @@
 
 namespace Dance.Store.Domain.Interfaces;
 
-public interface IRegistrationStatusRepository : IBaseRepository<RegistrationStatusEntity>;
+public interface IRegistrationStatusRepository : IBaseRepository<RegistrationStatus>;

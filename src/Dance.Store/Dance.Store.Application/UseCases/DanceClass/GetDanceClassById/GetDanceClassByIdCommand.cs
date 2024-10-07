@@ -3,4 +3,4 @@ using MediatR;
 
 namespace Dance.Store.Application.UseCases.DanceClass.GetDanceClassById;
 
-public record GetDanceClassByIdCommand(Guid danceClassId) : IRequest<DanceClassResponseDto>;
+public record GetDanceClassByIdCommand(Guid DanceClassId) : IRequest<DanceClassResponseDto>;

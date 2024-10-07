@@ -8,7 +8,7 @@ public class DeleteStudentHandler(IStudentRepository studentRepository) : IReque
 {
     public async Task Handle(DeleteStudentCommand request, CancellationToken cancellationToken)
     {
-        var student = await studentRepository.GetFirstAsync(x => x.Id == request.studentId, cancellationToken);
+        var student = await studentRepository.GetFirstAsync(x => x.Id == request.StudentId, cancellationToken);
         NotFoundException.ThrowIfNull(student);
         studentRepository.Delete(student);
         await studentRepository.SaveChangesAsync(cancellationToken);

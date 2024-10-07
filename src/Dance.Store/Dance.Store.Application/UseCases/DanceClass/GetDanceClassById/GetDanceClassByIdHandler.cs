@@ -10,8 +10,9 @@ public class GetDanceClassByIdHandler(IDanceClassRepository danceClassRepository
 {
     public async Task<DanceClassResponseDto> Handle(GetDanceClassByIdCommand request, CancellationToken cancellationToken)
     {
-        var danceClass = await danceClassRepository.GetFirstAsync(x => x.Id == request.danceClassId, cancellationToken);
+        var danceClass = await danceClassRepository.GetFirstAsync(x => x.Id == request.DanceClassId, cancellationToken);
         NotFoundException.ThrowIfNull(danceClass);
+
         return mapper.Map<DanceClassResponseDto>(danceClass);
     }
 }

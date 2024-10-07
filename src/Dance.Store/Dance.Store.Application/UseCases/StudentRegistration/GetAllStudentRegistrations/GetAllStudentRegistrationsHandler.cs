@@ -2,7 +2,6 @@
 using Dance.Store.Application.Dtos.ResponseDto;
 using Dance.Store.Domain.Interfaces;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Dance.Store.Application.UseCases.StudentRegistration.GetAllStudentRegistrations;
 
@@ -10,8 +9,8 @@ public class GetAllStudentRegistrationsHandler(IStudentRegistrationRepository st
 {
     public async Task<IEnumerable<StudentRegistrationResponseDto>> Handle(GetAllStudentRegistrationsCommand request, CancellationToken cancellationToken)
     {
-        var studentRegistrations = studentRegistrationRepository.GetRange(x => true, cancellationToken);
-        return await mapper.ProjectTo<StudentRegistrationResponseDto>(studentRegistrations)
-            .ToListAsync(cancellationToken);
+        var studentRegistrations = studentRegistrationRepository.GetRangeAsync(x => true, cancellationToken);
+
+        return mapper.Map<IEnumerable<StudentRegistrationResponseDto>>(studentRegistrations);
     }
 }

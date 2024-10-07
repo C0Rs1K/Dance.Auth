@@ -2,8 +2,7 @@
 
 namespace Dance.Store.Domain.Entities;
 
-public class BaseEntityWithName : BaseEntity
+public class RegistrationStatus : BaseEntity
 {
-    [MaxLength(128)]
     public string Name { get; set; }
 }

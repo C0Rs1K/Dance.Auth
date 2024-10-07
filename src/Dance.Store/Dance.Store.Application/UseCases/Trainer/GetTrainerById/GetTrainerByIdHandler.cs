@@ -10,8 +10,9 @@ public class GetTrainerByIdHandler(ITrainerRepository trainerRepository, IMapper
 {
     public async Task<TrainerResponseDto> Handle(GetTrainerByIdCommand request, CancellationToken cancellationToken)
     {
-        var trainer = await trainerRepository.GetFirstAsync(x => x.Id == request.trainerId, cancellationToken);
+        var trainer = await trainerRepository.GetFirstAsync(x => x.Id == request.TrainerId, cancellationToken);
         NotFoundException.ThrowIfNull(trainer);
+
         return mapper.Map<TrainerResponseDto>(trainer);
     }
 }

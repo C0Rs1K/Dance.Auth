@@ -10,8 +10,9 @@ public class GetStudentByIdHandler(IStudentRepository studentRepository, IMapper
 {
     public async Task<StudentResponseDto> Handle(GetStudentByIdCommand request, CancellationToken cancellationToken)
     {
-        var student = await studentRepository.GetFirstAsync(x => x.Id == request.studentId, cancellationToken);
+        var student = await studentRepository.GetFirstAsync(x => x.Id == request.StudentId, cancellationToken);
         NotFoundException.ThrowIfNull(student);
+
         return mapper.Map<StudentResponseDto>(student);
     }
 }

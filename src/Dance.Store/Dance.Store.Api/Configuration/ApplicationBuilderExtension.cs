@@ -14,7 +14,8 @@ public static class ApplicationBuilderExtension
         builder.Services.AddApplication()
             .AddEndpoints()
             .AddSwagger()
-            .AddExceptionHandler<HttpGlobalExceptionHandler>(); ;
+            .AddExceptionHandler<HttpGlobalExceptionHandler>();
+
         return builder;
     }
 
@@ -22,6 +23,7 @@ public static class ApplicationBuilderExtension
     {
         var connectionString = builder.Configuration.GetConnectionString("Database");
         builder.Services.AddInfrastructure(connectionString);
+
         return builder;
     }
 
@@ -29,6 +31,7 @@ public static class ApplicationBuilderExtension
     {
         services.AddControllers();
         services.AddEndpointsApiExplorer();
+
         return services;
     }
 
@@ -46,6 +49,7 @@ public static class ApplicationBuilderExtension
             opt.OperationFilter<SecurityRequirementsOperationFilter>();
             opt.DescribeAllParametersInCamelCase();
         });
+
         return services;
     }
 }

@@ -2,4 +2,4 @@
 
 namespace Dance.Store.Domain.Interfaces;
 
-public interface ITrainerRepository : IBaseRepository<TrainerEntity>;
+public interface ITrainerRepository : IBaseRepository<Trainer>;

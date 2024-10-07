@@ -6,11 +6,11 @@ namespace Dance.Store.Infrastructure.Context;
 
 public class DanceDbContext(DbContextOptions<DanceDbContext> options) : DbContext(options)
 {
-    public DbSet<DanceClassEntity> DanceClasses { get; set; }
-    public DbSet<TrainerEntity> Trainers { get; set; }
-    public DbSet<StudentEntity> Students { get; set; }
-    public DbSet<RegistrationStatusEntity> RegistrationStatuses { get; set; }
-    public DbSet<StudentRegistrationEntity> StudentRegistrations { get; set; }
+    public DbSet<DanceClass> DanceClasses { get; set; }
+    public DbSet<Trainer> Trainers { get; set; }
+    public DbSet<Student> Students { get; set; }
+    public DbSet<RegistrationStatusEnt> RegistrationStatuses { get; set; }
+    public DbSet<StudentRegistration> StudentRegistrations { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

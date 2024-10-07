@@ -3,4 +3,4 @@ using MediatR;
 
 namespace Dance.Store.Application.UseCases.Student.GetStudentById;
 
-public record GetStudentByIdCommand(Guid studentId) : IRequest<StudentResponseDto>;
+public record GetStudentByIdCommand(Guid StudentId) : IRequest<StudentResponseDto>;

@@ -8,7 +8,7 @@ public class DeleteDanceClassHandler(IDanceClassRepository danceClassRepository)
 {
     public async Task Handle(DeleteDanceClassCommand request, CancellationToken cancellationToken)
     {
-        var danceClass = await danceClassRepository.GetFirstAsync(x => x.Id == request.danceClassId, cancellationToken);
+        var danceClass = await danceClassRepository.GetFirstAsync(x => x.Id == request.DanceClassId, cancellationToken);
         NotFoundException.ThrowIfNull(danceClass);
         danceClassRepository.Delete(danceClass);
         await danceClassRepository.SaveChangesAsync(cancellationToken);

@@ -9,7 +9,7 @@ public class DeleteStudentRegistrationHandler(IStudentRegistrationRepository stu
     public async Task Handle(DeleteStudentRegistrationCommand request, CancellationToken cancellationToken)
     {
         var studentRegistration =
-            await studentRegistrationRepository.GetFirstAsync(x => x.Id == request.studentRegistrationId,
+            await studentRegistrationRepository.GetFirstAsync(x => x.Id == request.StudentRegistrationId,
                 cancellationToken);
         NotFoundException.ThrowIfNull(studentRegistration);
         studentRegistrationRepository.Delete(studentRegistration);

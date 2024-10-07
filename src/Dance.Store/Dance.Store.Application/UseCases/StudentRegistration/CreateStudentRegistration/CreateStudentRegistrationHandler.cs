@@ -1,18 +1,19 @@
 ﻿using AutoMapper;
-using Dance.Store.Domain.Entities;
+using Dance.Store.Application.Dtos.ResponseDto;
 using Dance.Store.Domain.Interfaces;
 using MediatR;
 
 namespace Dance.Store.Application.UseCases.StudentRegistration.CreateStudentRegistration;
 
-public class CreateStudentRegistrationHandler(IStudentRegistrationRepository studentRegistrationRepository, IMapper mapper) : IRequestHandler<CreateStudentRegistrationCommand, Guid>
+public class CreateStudentRegistrationHandler(IStudentRegistrationRepository studentRegistrationRepository, IMapper mapper) : IRequestHandler<CreateStudentRegistrationCommand, StudentRegistrationResponseDto>
 {
-    public async Task<Guid> Handle(CreateStudentRegistrationCommand request, CancellationToken cancellationToken)
+    public async Task<StudentRegistrationResponseDto> Handle(CreateStudentRegistrationCommand request, CancellationToken cancellationToken)
     {
-        var studentRegistrationRequestDto = request.studentRegistrationRequestDto;
-        var studentRegistration = mapper.Map<StudentRegistrationEntity>(studentRegistrationRequestDto);
+        var studentRegistrationRequestDto = request.StudentRegistrationRequestDto;
+        var studentRegistration = mapper.Map<Domain.Entities.StudentRegistration>(studentRegistrationRequestDto);
         studentRegistrationRepository.Create(studentRegistration);
         await studentRegistrationRepository.SaveChangesAsync(cancellationToken);
-        return studentRegistration.Id;
+
+        return mapper.Map<StudentRegistrationResponseDto>(studentRegistration);
     }
 }

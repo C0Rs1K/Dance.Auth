@@ -8,7 +8,7 @@ public class DeleteTrainerHandler(ITrainerRepository trainerRepository) : IReque
 {
     public async Task Handle(DeleteTrainerCommand request, CancellationToken cancellationToken)
     {
-        var trainer = await trainerRepository.GetFirstAsync(x => x.Id == request.trainerId, cancellationToken);
+        var trainer = await trainerRepository.GetFirstAsync(x => x.Id == request.TrainerId, cancellationToken);
         NotFoundException.ThrowIfNull(trainer);
         trainerRepository.Delete(trainer);
         await trainerRepository.SaveChangesAsync(cancellationToken);

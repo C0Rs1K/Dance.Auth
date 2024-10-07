@@ -18,16 +18,16 @@ public abstract class BaseRepository<T>(DanceDbContext context) : IBaseRepositor
         context.Set<T>().Remove(entity);
     }
 
-    public async Task SaveChangesAsync(CancellationToken cancellationToken)
+    public virtual async Task SaveChangesAsync(CancellationToken cancellationToken)
     {
         await context.SaveChangesAsync(cancellationToken);
     }
 
-    public virtual IQueryable<T> GetRange(Expression<Func<T, bool>> condition,
+    public virtual async Task<IEnumerable<T>> GetRangeAsync(Expression<Func<T, bool>> condition,
         CancellationToken cancellationToken)
     {
-        return context.Set<T>().Where(condition)
-            .AsNoTracking();
+        return await context.Set<T>().Where(condition)
+            .AsNoTracking().ToListAsync(cancellationToken);
     }
 
     public virtual async Task<T?> GetFirstAsync(Expression<Func<T, bool>> condition,

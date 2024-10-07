@@ -2,4 +2,4 @@
 
 namespace Dance.Store.Domain.Interfaces;
 
-public interface IDanceClassRepository : IBaseRepository<DanceClassEntity>;
+public interface IDanceClassRepository : IBaseRepository<DanceClass>;

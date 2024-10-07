@@ -11,9 +11,10 @@ public class GetStudentRegistrationByIdHandler(IStudentRegistrationRepository st
     public async Task<StudentRegistrationResponseDto> Handle(GetStudentRegistrationByIdCommand request, CancellationToken cancellationToken)
     {
         var studentRegistration =
-            await studentRegistrationRepository.GetFirstAsync(x => x.Id == request.studentRegistrationId,
+            await studentRegistrationRepository.GetFirstAsync(x => x.Id == request.StudentRegistrationId,
                 cancellationToken);
         NotFoundException.ThrowIfNull(studentRegistration);
+
         return mapper.Map<StudentRegistrationResponseDto>(studentRegistration);
     }
 }

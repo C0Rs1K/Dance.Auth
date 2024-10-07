@@ -2,10 +2,9 @@
 
 namespace Dance.Store.Domain.Entities;
 
-public class StudentEntity : BaseEntityWithName
+public class Student : BaseEntity
 {
-    [MaxLength(64)]
+    public string Name { get; set; }
     public string? Instagram { get; set; }
-    [MaxLength(16)]
     public string Phone { get; set; }
 }

@@ -9,7 +9,15 @@ public class StudentMappingProfile : Profile
 {
     public StudentMappingProfile()
     {
-        CreateMap<StudentEntity, StudentResponseDto>();
-        CreateMap<StudentRequestDto, StudentEntity>();
+        CreateMap<StudentRequestDto, Student>()
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+            .ForMember(dest => dest.Instagram, opt => opt.MapFrom(src => src.Instagram))
+            .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Phone));
+
+        CreateMap<Student, StudentResponseDto>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+            .ForMember(dest => dest.Instagram, opt => opt.MapFrom(src => src.Instagram))
+            .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Phone));
     }
 }

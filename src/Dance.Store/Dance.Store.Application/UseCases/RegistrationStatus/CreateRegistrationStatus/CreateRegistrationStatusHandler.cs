@@ -1,18 +1,22 @@
 ﻿using AutoMapper;
-using Dance.Store.Domain.Entities;
+using Dance.Store.Application.Dtos.ResponseDto;
+using Dance.Store.Application.Exceptions;
 using Dance.Store.Domain.Interfaces;
 using MediatR;
 
 namespace Dance.Store.Application.UseCases.RegistrationStatus.CreateRegistrationStatus;
 
-public class CreateRegistrationStatusHandler(IRegistrationStatusRepository registrationStatusRepository, IMapper mapper) : IRequestHandler<CreateRegistrationStatusCommand, Guid>
+public class CreateRegistrationStatusHandler(IRegistrationStatusRepository registrationStatusRepository, IMapper mapper) : IRequestHandler<CreateRegistrationStatusCommand, RegistrationStatusResponseDto>
 {
-    public async Task<Guid> Handle(CreateRegistrationStatusCommand request, CancellationToken cancellationToken)
+    public async Task<RegistrationStatusResponseDto> Handle(CreateRegistrationStatusCommand request, CancellationToken cancellationToken)
     {
-        var registrationStatusDto = request.registrationStatusRequestDto;
-        var registrationStatus = mapper.Map<RegistrationStatusEntity>(registrationStatusDto);
-        registrationStatusRepository.Create(registrationStatus);
+        var registrationStatusDto = request.RegistrationStatusRequestDto;
+        var registrationStatus = mapper.Map<Domain.Entities.RegistrationStatus>(registrationStatusDto);
+        var status = await registrationStatusRepository.GetFirstAsync(x => x.Name == registrationStatus.Name, cancellationToken);
+        AlreadyExistsException.ThrowIfNotNull(status);
+        registrationStatusRepository.Create(registrationStatus);    
         await registrationStatusRepository.SaveChangesAsync(cancellationToken);
-        return registrationStatus.Id;
+
+        return mapper.Map<RegistrationStatusResponseDto>(registrationStatus);
     }
 }

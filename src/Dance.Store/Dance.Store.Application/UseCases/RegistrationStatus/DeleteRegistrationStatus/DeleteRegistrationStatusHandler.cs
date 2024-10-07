@@ -9,7 +9,7 @@ public class DeleteRegistrationStatusHandler(IRegistrationStatusRepository regis
     public async Task Handle(DeleteRegistrationStatusCommand request, CancellationToken cancellationToken)
     {
         var registrationStatus =
-            await registrationStatusRepository.GetFirstAsync(x => x.Id == request.registrationStatusId, cancellationToken);
+            await registrationStatusRepository.GetFirstAsync(x => x.Id == request.RegistrationStatusId, cancellationToken);
         NotFoundException.ThrowIfNull(registrationStatus);
         registrationStatusRepository.Delete(registrationStatus);
         await registrationStatusRepository.SaveChangesAsync(cancellationToken);

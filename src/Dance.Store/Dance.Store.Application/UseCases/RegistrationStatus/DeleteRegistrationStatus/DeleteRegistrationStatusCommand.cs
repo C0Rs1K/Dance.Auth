@@ -2,4 +2,4 @@
 
 namespace Dance.Store.Application.UseCases.RegistrationStatus.DeleteRegistrationStatus;
 
-public record DeleteRegistrationStatusCommand(Guid registrationStatusId) : IRequest;  
+public record DeleteRegistrationStatusCommand(Guid RegistrationStatusId) : IRequest;  

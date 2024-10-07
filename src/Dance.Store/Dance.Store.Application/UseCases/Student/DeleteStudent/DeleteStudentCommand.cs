@@ -2,4 +2,4 @@
 
 namespace Dance.Store.Application.UseCases.Student.DeleteStudent;
 
-public record DeleteStudentCommand(Guid studentId) : IRequest;
+public record DeleteStudentCommand(Guid StudentId) : IRequest;

@@ -10,7 +10,8 @@ public class GetAllStudentsHandler(IStudentRepository studentRepository, IMapper
 {
     public async Task<IEnumerable<StudentResponseDto>> Handle(GetAllStudentsCommand request, CancellationToken cancellationToken)
     {
-        var students = studentRepository.GetRange(x => true, cancellationToken);
-        return await mapper.ProjectTo<StudentResponseDto>(students).ToListAsync(cancellationToken);
+        var students = studentRepository.GetRangeAsync(x => true, cancellationToken);
+
+        return mapper.Map<IEnumerable<StudentResponseDto>>(students);
     }
 }
