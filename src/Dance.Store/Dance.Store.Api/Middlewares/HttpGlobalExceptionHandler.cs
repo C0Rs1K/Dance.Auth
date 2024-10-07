@@ -24,9 +24,10 @@ public class HttpGlobalExceptionHandler(IHostEnvironment environment) : IExcepti
         return true;
     }
 
-    private Task HandleNotFoundException(HttpContext httpContext, NotFoundException notFoundException)
+    private Task HandleNotFoundException(HttpContext context, NotFoundException notFoundException)
     {
-        throw new NotImplementedException();
+        return context.WriteErrorAsync(HttpStatusCode.NotFound,
+            _environment.IsDevelopment() ? notFoundException.Message : "Resource not found");
     }
 
     private Task HandleValidationException(HttpContext context, ValidationException validationException)
