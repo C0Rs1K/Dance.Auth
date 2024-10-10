@@ -1,4 +1,5 @@
 ﻿using Dance.Auth.BusinessLogic.Dtos;
+using Dance.Auth.BusinessLogic.Dtos.RequestDto;
 using FluentValidation;
 
 namespace Dance.Auth.BusinessLogic.Validators;

@@ -6,11 +6,11 @@ namespace Dance.Auth.Api.Controllers
 {   
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class InfoController(IInfoService infoService) : ControllerBase
     {
         [HttpGet]
-        [Authorize]
-        public async Task<IActionResult> GetInfo()
+        public async Task<IActionResult> GetInfo(CancellationToken cancellationToken)
         {
             var info = await infoService.GetUserInfo(User.Identity.Name);
 

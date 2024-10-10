@@ -22,6 +22,7 @@ public static class BusinessConfigurationExtension
         services.AddScoped<ILoginService, LoginService>();
         services.AddScoped<IRegistrationService, RegistrationService>();
         services.AddScoped<IInfoService, InfoService>();
+        services.AddScoped<IUserService, UserService>();
 
         return services;
     }

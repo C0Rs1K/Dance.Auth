@@ -1,4 +1,4 @@
-using Dance.Auth.BusinessLogic.Dtos;
+using Dance.Auth.BusinessLogic.Dtos.RequestDto;
 using Dance.Auth.BusinessLogic.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,4 +1,4 @@
-﻿namespace Dance.Auth.BusinessLogic.Dtos;
+﻿namespace Dance.Auth.BusinessLogic.Dtos.RequestDto;
 
 public class RegistrationRequestDto
 {

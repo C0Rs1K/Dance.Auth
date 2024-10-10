@@ -1,6 +1,6 @@
-﻿namespace Dance.Auth.BusinessLogic.Dtos;
+﻿namespace Dance.Auth.BusinessLogic.Dtos.RequestDto;
 
-public class UserInfoDto
+public class UserInfoRequestDto
 {
     public string Email { get; set; }
     public string Name { get; set; }

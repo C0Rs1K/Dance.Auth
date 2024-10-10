@@ -1,8 +1,8 @@
-﻿using Dance.Auth.BusinessLogic.Dtos;
+﻿using Dance.Auth.BusinessLogic.Dtos.RequestDto;
 
 namespace Dance.Auth.BusinessLogic.Services.Interfaces;
 
 public interface IInfoService
 {
-    Task<UserInfoDto> GetUserInfo(string userName);
+    Task<UserInfoRequestDto> GetUserInfo(string userName);
 }
