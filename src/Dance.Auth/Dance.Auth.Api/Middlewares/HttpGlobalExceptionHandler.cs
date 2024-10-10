@@ -16,6 +16,8 @@ public class HttpGlobalExceptionHandler(IHostEnvironment environment) : IExcepti
             ValidationException validationException => HandleValidationException(httpContext, validationException),
             BadRequestException badRequestException => HandleBadRequestException(httpContext, badRequestException),
             UnauthorizedAccessException unauthorizedException => HandleUnauthorizedException(httpContext, unauthorizedException),
+            NotFoundException notFoundException => HandleNotFoundException(httpContext, notFoundException),
+            AlreadyExistException alreadyExistException => HandleAlreadyExistException(httpContext, alreadyExistException),
             _ => HandleError(httpContext, exception)
         };
 
@@ -28,6 +30,18 @@ public class HttpGlobalExceptionHandler(IHostEnvironment environment) : IExcepti
     {
         return context.WriteErrorAsync(HttpStatusCode.BadRequest,
             validationException.Errors.Select(x => x.ErrorMessage).ToArray());
+    }
+
+    private Task HandleNotFoundException(HttpContext context, NotFoundException notFoundException)
+    {
+        return context.WriteErrorAsync(HttpStatusCode.NotFound,
+            _environment.IsDevelopment() ? notFoundException.Message : "Resource not found");
+    }
+
+    private Task HandleAlreadyExistException(HttpContext context, AlreadyExistException alreadyExistException)
+    {
+        return context.WriteErrorAsync(HttpStatusCode.BadRequest,
+            _environment.IsDevelopment() ? alreadyExistException.Message : "User already exist");
     }
 
     private Task HandleBadRequestException(HttpContext context, BadRequestException badHttpRequestException)
