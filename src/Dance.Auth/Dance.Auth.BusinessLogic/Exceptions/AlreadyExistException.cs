@@ -6,7 +6,7 @@ public class AlreadyExistException(string message) : Exception(message)
     {
         if (item != null)
         {
-            throw new AlreadyExistException("User already exist" + item);
+            throw new AlreadyExistException("User already exist " + item);
         }
     }
 }

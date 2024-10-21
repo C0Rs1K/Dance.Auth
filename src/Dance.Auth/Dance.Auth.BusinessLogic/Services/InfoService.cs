@@ -11,6 +11,7 @@ public class InfoService(UserManager<User> userManager) : IInfoService
     public async Task<UserInfoRequestDto> GetUserInfo(string userName)
     {
         var user = await userManager.FindByNameAsync(userName);
+
         var userRoles = await userManager.GetRolesAsync(user);
 
         return new UserInfoRequestDto

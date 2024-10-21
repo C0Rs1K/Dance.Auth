@@ -1,10 +1,10 @@
+using Confluent.Kafka;
 using Dance.Auth.Api.Middlewares;
 using Dance.Auth.BusinessLogic.Configuration;
 using Dance.Auth.DataAccess.Configuration;
 using Dance.Auth.DataAccess.Context;
 using Dance.Auth.DataAccess.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 
@@ -14,13 +14,12 @@ public static class ApiConfigurationExtension
 {
     public static WebApplicationBuilder ConfigureWebApplicationBuilder(this WebApplicationBuilder builder)
     {
+        var config = builder.Configuration.GetSection("Kafka").Get<ProducerConfig>();
         builder.AddDatabase();
         builder.Services.AddApplicationServices()
-            .AddBusinessServices()
-            .ConfigureAutoFluentValidation()
-            .AddIdentityServices();
-
-        builder.Services.AddExceptionHandler<HttpGlobalExceptionHandler>();
+            .ConfigureBusinessLogicLayer(config)
+            .AddIdentityServices()
+            .AddExceptionHandler<HttpGlobalExceptionHandler>();
 
         return builder;
     }
