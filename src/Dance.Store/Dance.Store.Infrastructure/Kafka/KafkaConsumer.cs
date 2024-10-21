@@ -8,11 +8,13 @@ namespace Dance.Store.Infrastructure.Kafka;
 
 public class KafkaConsumer(ISender sender, IConsumer<string, Student> consumer) : BackgroundService
 {
+    private const string Topic = "registrations";
+
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         try
         {
-            consumer.Subscribe("s");
+            consumer.Subscribe(Topic);
             while (!stoppingToken.IsCancellationRequested)
             {
                 var result = consumer.Consume(stoppingToken);
