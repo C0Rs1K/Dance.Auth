@@ -9,7 +9,7 @@ namespace Dance.Auth.BusinessLogic.Services;
 
 public class RegistrationService(UserManager<User> userManager, IUserStore<User> userStore, IProduceService produceService) : IRegistrationService
 {
-    private const string registrationTopic = "registration-topic";
+    private const string RegistrationTopic = "registrations";
 
     public async Task RegisterUserAsync(RegistrationRequestDto registrationRequest, CancellationToken cancellationToken)
     {
@@ -36,6 +36,6 @@ public class RegistrationService(UserManager<User> userManager, IUserStore<User>
         }
         
         await userManager.AddToRoleAsync(user, Roles.User.GetDescription());
-        await produceService.ProduceAsync(registrationTopic, user, cancellationToken);
+        await produceService.ProduceAsync(RegistrationTopic, user, cancellationToken);
     }
 }
