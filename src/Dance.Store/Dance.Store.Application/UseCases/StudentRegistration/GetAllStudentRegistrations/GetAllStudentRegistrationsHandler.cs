@@ -9,7 +9,7 @@ public class GetAllStudentRegistrationsHandler(IStudentRegistrationRepository st
 {
     public async Task<IEnumerable<StudentRegistrationResponseDto>> Handle(GetAllStudentRegistrationsCommand request, CancellationToken cancellationToken)
     {
-        var studentRegistrations = studentRegistrationRepository.GetRangeAsync(x => true, cancellationToken);
+        var studentRegistrations = await studentRegistrationRepository.GetRangeAsync(x => true, cancellationToken);
 
         return mapper.Map<IEnumerable<StudentRegistrationResponseDto>>(studentRegistrations);
     }

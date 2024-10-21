@@ -1,4 +1,5 @@
-﻿using Dance.Store.Api.Middlewares;
+﻿using Confluent.Kafka;
+using Dance.Store.Api.Middlewares;
 using Dance.Store.Application.Configuration;
 using Dance.Store.Infrastructure.Configuration;
 using Microsoft.OpenApi.Models;
@@ -22,7 +23,8 @@ public static class ApplicationBuilderExtension
     private static WebApplicationBuilder AddInfrastructure(this WebApplicationBuilder builder)
     {
         var connectionString = builder.Configuration.GetConnectionString("Database");
-        builder.Services.AddInfrastructure(connectionString);
+        var config = builder.Configuration.GetSection("Kafka").Get<ConsumerConfig>();
+        builder.Services.AddInfrastructure(connectionString, config);
 
         return builder;
     }

@@ -15,8 +15,7 @@ public static class ApplicationConfigurationExtension
         return services
             .AddAutoMapper(Assembly.GetExecutingAssembly())
             .AddFluentValidation()
-            .AddServices()
-            .ConfigureKafka();
+            .AddServices();
     }
 
     private static IServiceCollection AddFluentValidation(this IServiceCollection services)
@@ -30,22 +29,6 @@ public static class ApplicationConfigurationExtension
         services.AddMediatR(opt =>
             opt.RegisterServicesFromAssemblyContaining<CreateDanceClassCommand>()
         );
-
-        return services;
-    }
-
-    private static IServiceCollection ConfigureKafka(this IServiceCollection services)
-    {
-        services.AddSingleton(provider =>
-        {
-            var config = new ConsumerConfig
-            {
-                BootstrapServers = "localhost:9092",
-                GroupId = "first-group",
-                AutoOffsetReset = AutoOffsetReset.Earliest
-            };
-            return new ConsumerBuilder<string, string>(config).Build();
-        });
 
         return services;
     }

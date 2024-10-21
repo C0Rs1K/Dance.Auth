@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Dance.Store.Domain.Entities;
+﻿namespace Dance.Store.Domain.Entities;
 
 public class Student : BaseEntity
 {

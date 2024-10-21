@@ -9,7 +9,7 @@ public class GetAllDanceClassesHandler(IDanceClassRepository danceClassRepositor
 {
     public async Task<IEnumerable<DanceClassResponseDto>> Handle(GetAllDanceClassesCommand request, CancellationToken cancellationToken)
     {
-        var danceClasses = danceClassRepository.GetRangeAsync(x => true, cancellationToken);
+        var danceClasses = await danceClassRepository.GetRangeAsync(x => true, cancellationToken);
 
         return mapper.Map<IEnumerable<DanceClassResponseDto>>(danceClasses);
     }

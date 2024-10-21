@@ -9,7 +9,7 @@ public class DanceDbContext(DbContextOptions<DanceDbContext> options) : DbContex
     public DbSet<DanceClass> DanceClasses { get; set; }
     public DbSet<Trainer> Trainers { get; set; }
     public DbSet<Student> Students { get; set; }
-    public DbSet<RegistrationStatusEnt> RegistrationStatuses { get; set; }
+    public DbSet<RegistrationStatus> RegistrationStatuses { get; set; }
     public DbSet<StudentRegistration> StudentRegistrations { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

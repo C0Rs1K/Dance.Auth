@@ -13,6 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Confluent.Kafka" Version="2.6.0" />
+    <PackageReference Include="Confluent.SchemaRegistry.Serdes.Json" Version="2.6.0" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
       <PrivateAssets>all</PrivateAssets>
@@ -22,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Dance.Store.Application\Dance.Store.Application.csproj" />
     <ProjectReference Include="..\Dance.Store.Domain\Dance.Store.Domain.csproj" />
   </ItemGroup>
 

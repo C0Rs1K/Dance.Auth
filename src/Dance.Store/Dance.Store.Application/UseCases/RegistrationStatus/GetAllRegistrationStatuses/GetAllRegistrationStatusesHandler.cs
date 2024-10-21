@@ -9,7 +9,7 @@ public class GetAllRegistrationStatusesHandler(IRegistrationStatusRepository reg
 {
     public async Task<IEnumerable<RegistrationStatusResponseDto>> Handle(GetAllRegistrationStatusesCommand request, CancellationToken cancellationToken)
     {
-        var registrationStatuses = registrationStatusRepository.GetRangeAsync(x => true, cancellationToken);
+        var registrationStatuses = await registrationStatusRepository.GetRangeAsync(x => true, cancellationToken);
 
         return mapper.Map<IEnumerable<RegistrationStatusResponseDto>>(registrationStatuses);
     }
