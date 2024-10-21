@@ -1,10 +1,10 @@
-﻿using Dance.Auth.Data.Context;
+﻿using Dance.Auth.DataAccess.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Dance.Auth.Data.Configuration;
+namespace Dance.Auth.DataAccess.Configuration;
 
-public static class DataConfiguration
+public static class ServiceDataExtensions
 {
     public static IServiceCollection ConfigureDatabase(this IServiceCollection services, string? connectionString)
     {

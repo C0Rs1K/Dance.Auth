@@ -13,10 +13,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="8.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Dance.Auth.Data\Dance.Auth.Data.csproj" />
+    <ProjectReference Include="..\Dance.Auth.BusinessLogic\Dance.Auth.BusinessLogic.csproj" />
+    <ProjectReference Include="..\Dance.Auth.DataAccess\Dance.Auth.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>
