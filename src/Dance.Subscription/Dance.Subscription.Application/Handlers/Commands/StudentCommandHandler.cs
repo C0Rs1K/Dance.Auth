@@ -12,7 +12,8 @@ namespace Dance.Subscription.Application.Handlers.Commands;
 public class StudentCommandHandler(IStudentRepository studentRepository, IMapper mapper) :
     IRequestHandler<CreateStudentCommand, StudentResponseDto>,
     IRequestHandler<UpdateStudentCommand, StudentResponseDto>,
-    IRequestHandler<DeleteStudentCommand>
+    IRequestHandler<DeleteStudentCommand>,
+    IRequestHandler<ProcessStudentRegistrationCommand>
 {
     public async Task<StudentResponseDto> Handle(CreateStudentCommand request, CancellationToken cancellationToken)
     {
@@ -37,5 +38,17 @@ public class StudentCommandHandler(IStudentRepository studentRepository, IMapper
         var student = await studentRepository.GetFirstAsync(x => x.Id == new ObjectId(request.Id), cancellationToken);
         NotFoundException.ThrowIfNull(student);
         await studentRepository.DeleteAsync(request.Id, cancellationToken); 
+    }
+
+    public async Task Handle(ProcessStudentRegistrationCommand request, CancellationToken cancellationToken)
+    {
+        var student = request.Student;
+        
+        var existedStudent = await studentRepository.GetFirstAsync(x => x.Name == student.Name, cancellationToken);
+
+        if(existedStudent == null)
+        {
+            await studentRepository.CreateAsync(student, cancellationToken);
+        }
     }
 }

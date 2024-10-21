@@ -1,4 +1,5 @@
 ﻿using Confluent.Kafka;
+using Dance.Subscription.Application.Commands.Student;
 using Dance.Subscription.Domain.Entities;
 using MediatR;
 using Microsoft.Extensions.Hosting;

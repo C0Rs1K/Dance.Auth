@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Dance.Subscription.Application\Dance.Subscription.Application.csproj" />
     <ProjectReference Include="..\Dance.Subscription.Domain\Dance.Subscription.Domain.csproj" />
   </ItemGroup>
 
