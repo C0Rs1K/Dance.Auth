@@ -6,11 +6,9 @@ using Dance.Subscription.Domain.Interfaces;
 using MediatR;
 using MongoDB.Bson;
 
-namespace Dance.Subscription.Application.Handlers.Queries;
+namespace Dance.Subscription.Application.Handlers.Queries.Student;
 
-public class StudentQueryHandler(IStudentRepository studentRepository, IMapper mapper) : 
-    IRequestHandler<GetStudentByIdQuery, StudentResponseDto>, 
-    IRequestHandler<GetAllStudentsQuery, List<StudentResponseDto>>
+public class GetStudentByIdHandler(IStudentRepository studentRepository, IMapper mapper) : IRequestHandler<GetStudentByIdQuery, StudentResponseDto>
 {
     public async Task<StudentResponseDto> Handle(GetStudentByIdQuery request, CancellationToken cancellationToken)
     {
@@ -19,12 +17,5 @@ public class StudentQueryHandler(IStudentRepository studentRepository, IMapper m
         NotFoundException.ThrowIfNull(student);
 
         return mapper.Map<StudentResponseDto>(student);
-    }
-
-    public async Task<List<StudentResponseDto>> Handle(GetAllStudentsQuery request, CancellationToken cancellationToken)
-    {
-        var students = await studentRepository.GetRangeAsync(x => true, cancellationToken);
-
-        return mapper.Map<List<StudentResponseDto>>(students);
     }
 }

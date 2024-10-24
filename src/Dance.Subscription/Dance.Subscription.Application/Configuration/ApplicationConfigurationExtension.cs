@@ -5,6 +5,7 @@ using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using Dance.Subscription.Application.Handlers.Commands;
+using Dance.Subscription.Application.Handlers.Commands.StudentSubscription;
 
 namespace Dance.Subscription.Application.Configuration;
 
@@ -27,7 +28,7 @@ public static class ApplicationConfigurationExtension
     private static IServiceCollection AddServices(this IServiceCollection services)
     {
         services.AddMediatR(opt =>
-            opt.RegisterServicesFromAssemblyContaining<StudentCommandHandler>()
+            opt.RegisterServicesFromAssemblyContaining<DeleteExpiredSubscriptionHandler>()
         );
 
         return services;

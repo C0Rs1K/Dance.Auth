@@ -12,8 +12,5 @@ public class StudentSubscriptionRequestDtoValidator : AbstractValidator<StudentS
 
         RuleFor(x => x.StudentId)
             .NotEmpty().WithMessage("StudentId is required.");
-
-        RuleFor(x => x.RemainingClasses)
-            .GreaterThan(0).WithMessage("RemainingClasses must be greater than zero.");
     }
 }

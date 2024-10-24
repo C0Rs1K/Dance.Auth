@@ -7,10 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Subscription\" />
-    <Folder Include="Commands\StudentSubscription\" />
     <Folder Include="Dtos\RequestDto\" />
-    <Folder Include="Handlers\Queries\" />
+    <Folder Include="Handlers\Commands\Subscription\" />
+    <Folder Include="Handlers\Queries\Student\" />
+    <Folder Include="Handlers\Queries\StudentSubscription\" />
     <Folder Include="Queries\Student\" />
     <Folder Include="Queries\StudentSubscription\" />
     <Folder Include="Configuration\" />

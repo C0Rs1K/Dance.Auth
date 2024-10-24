@@ -10,12 +10,9 @@ public class SubscriptionProfile : Profile
     {
         CreateMap<SubscriptionRequestDto, Domain.Entities.Subscription>()
             .ForMember(dest => dest.Id, opt => opt.Ignore())
-            .ForMember(dest => dest.NumberOfClasses, opt => opt.MapFrom(src => src.NumberOfClasses))
-            .ForMember(dest => dest.ValidityPeriodInDays, opt => opt.MapFrom(src => src.ValidityPeriodInDays));
-
+            .ForMember(dest => dest.NumberOfClasses, opt => opt.MapFrom(src => src.NumberOfClasses));
         CreateMap<Domain.Entities.Subscription, SubscriptionResponseDto>()
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id.ToString()))
-            .ForMember(dest => dest.NumberOfClasses, opt => opt.MapFrom(src => src.NumberOfClasses))
-            .ForMember(dest => dest.ValidityPeriodInDays, opt => opt.MapFrom(src => src.ValidityPeriodInDays));
+            .ForMember(dest => dest.NumberOfClasses, opt => opt.MapFrom(src => src.NumberOfClasses));
     }
 }
