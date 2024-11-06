@@ -14,6 +14,7 @@ public class RegistrationService(UserManager<User> userManager, IUserStore<User>
     {
         var emailStore = (IUserEmailStore<User>)userStore;
         var email = registrationRequest.Email;
+        ;
         
         var user = new User();
         await userStore.SetUserNameAsync(user, email, cancellationToken);
