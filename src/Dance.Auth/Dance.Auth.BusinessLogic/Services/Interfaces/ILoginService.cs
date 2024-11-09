@@ -1,4 +1,4 @@
-using Dance.Auth.BusinessLogic.Dtos.RequestDto;
+﻿using Dance.Auth.BusinessLogic.Dtos.RequestDto;
 using System.Security.Claims;
 
 namespace Dance.Auth.BusinessLogic.Services.Interfaces;

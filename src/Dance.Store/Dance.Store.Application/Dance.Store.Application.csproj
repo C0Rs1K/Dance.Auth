@@ -7,11 +7,38 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\" />
-    <Folder Include="Configuration\" />
-    <Folder Include="MapperProfiles\" />
-    <Folder Include="Validatiors\" />
-    <Folder Include="UseCases\" />
+    <Folder Include="Dtos\RequestDto\" />
+    <Folder Include="UseCases\DanceClass\CreateDanceClass\" />
+    <Folder Include="UseCases\DanceClass\DeleteDanceClass\" />
+    <Folder Include="UseCases\DanceClass\GetAllDanceClasses\" />
+    <Folder Include="UseCases\DanceClass\UpdateDanceClass\" />
+    <Folder Include="UseCases\RegistrationStatus\GetAllRegistrationStatuses\" />
+    <Folder Include="UseCases\RegistrationStatus\GetRegistrationStatusById\" />
+    <Folder Include="UseCases\RegistrationStatus\UpdateRegistrationStatus\" />
+    <Folder Include="UseCases\StudentRegistration\GetAllStudentRegistrations\" />
+    <Folder Include="UseCases\StudentRegistration\GetStudentRegistrationById\" />
+    <Folder Include="UseCases\StudentRegistration\UpdateStudentRegistration\" />
+    <Folder Include="UseCases\Student\DeleteStudent\" />
+    <Folder Include="UseCases\Student\GetAllStudents\" />
+    <Folder Include="UseCases\Student\UpdateStudent\" />
+    <Folder Include="UseCases\Trainer\CreateTrainer\" />
+    <Folder Include="UseCases\Trainer\GetAllTrainers\" />
+    <Folder Include="UseCases\Trainer\UpdateTrainer\" />
+    <Folder Include="Validators\" />
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.10.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
+    <PackageReference Include="SharpGrip.FluentValidation.AutoValidation.Mvc" Version="1.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dance.Store.Domain\Dance.Store.Domain.csproj" />
   </ItemGroup>
 
 </Project>

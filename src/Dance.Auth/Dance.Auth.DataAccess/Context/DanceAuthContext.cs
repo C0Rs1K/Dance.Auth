@@ -1,10 +1,10 @@
-﻿using System.Reflection;
-using Dance.Auth.DataAccess.Models;
+﻿using Dance.Auth.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
-namespace Dance.Auth.DataAccess.Context;
+namespace Dance.Auth.Data.Context;
 
 public class DanceAuthContext(DbContextOptions<DanceAuthContext> options)
     : IdentityDbContext<User, IdentityRole<Guid>, Guid>(options)
