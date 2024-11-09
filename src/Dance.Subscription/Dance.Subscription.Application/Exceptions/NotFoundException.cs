@@ -1,4 +1,4 @@
-﻿namespace Dance.Auth.BusinessLogic.Exceptions;
+﻿namespace Dance.Subscription.Application.Exceptions;
 
 public class NotFoundException(string message) : Exception(message)
 {
@@ -6,7 +6,7 @@ public class NotFoundException(string message) : Exception(message)
     {
         if (item == null)
         {
-            throw new NotFoundException("User not found: " + item);
+            throw new NotFoundException("Item not found: " + item);
         }
     }
 }
