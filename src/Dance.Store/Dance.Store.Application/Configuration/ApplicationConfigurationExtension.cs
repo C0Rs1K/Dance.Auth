@@ -4,6 +4,7 @@ using FluentValidation;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 using Dance.Store.Application.UseCases.DanceClass.CreateDanceClass;
 using Dance.Store.Application.Validators;
+using Confluent.Kafka;
 
 namespace Dance.Store.Application.Configuration;
 

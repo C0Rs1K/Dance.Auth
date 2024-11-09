@@ -9,7 +9,7 @@ public class GetAllTrainersHandler(ITrainerRepository trainerRepository, IMapper
 {
     public async Task<IEnumerable<TrainerResponseDto>> Handle(GetAllTrainersCommand request, CancellationToken cancellationToken)
     {
-        var trainers = trainerRepository.GetRangeAsync(x => true, cancellationToken);
+        var trainers = await trainerRepository.GetRangeAsync(x => true, cancellationToken);
 
         return mapper.Map<IEnumerable<TrainerResponseDto>>(trainers);
     }
