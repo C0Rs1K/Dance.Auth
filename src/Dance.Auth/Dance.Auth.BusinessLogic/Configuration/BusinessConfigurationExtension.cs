@@ -15,8 +15,8 @@ public static class BusinessConfigurationExtension
         ProducerConfig config)
     {
         services.ConfigureAutoFluentValidation()
-            .AddBusinessServices()
-            .ConfigureKafka(config);
+            .AddBusinessServices();
+            //.ConfigureKafka(config);
 
         return services;
     }

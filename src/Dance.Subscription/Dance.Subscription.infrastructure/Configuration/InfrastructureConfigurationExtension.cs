@@ -16,8 +16,8 @@ public static class InfrastructureConfigurationExtension
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, MongoDbOptions options, ConsumerConfig config)
     {
         return services.ConfigureDatabase(options)
-            .AddRepositories()
-            .ConfigureKafka(config);
+            .AddRepositories();
+        //.ConfigureKafka(config);
     }
 
     private static IServiceCollection ConfigureKafka(this IServiceCollection services, ConsumerConfig config)

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Dance.Auth.Data.Seed;
+namespace Dance.Auth.DataAccess.Seed;
 
 public class RoleSeed : IEntityTypeConfiguration<IdentityRole<Guid>>
 {

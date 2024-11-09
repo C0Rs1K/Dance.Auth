@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Dance.Auth.BusinessLogic.Services;
 
-public class RegistrationService(UserManager<User> userManager, IUserStore<User> userStore, IProduceService produceService) : IRegistrationService
+public class RegistrationService(UserManager<User> userManager, IUserStore<User> userStore/*, IProduceService produceService*/) : IRegistrationService
 {
     private const string RegistrationTopic = "registrations";
 
@@ -36,6 +36,6 @@ public class RegistrationService(UserManager<User> userManager, IUserStore<User>
         }
         
         await userManager.AddToRoleAsync(user, Roles.User.GetDescription());
-        await produceService.ProduceAsync(RegistrationTopic, user, cancellationToken);
+        /*await produceService.ProduceAsync(RegistrationTopic, user, cancellationToken);*/
     }
 }

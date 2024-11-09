@@ -1,4 +1,4 @@
-﻿using Dance.Auth.Data.Configuration;
+﻿using Dance.Auth.DataAccess.Configuration;
 
 namespace Dance.Auth.Api.Configuration;
 
