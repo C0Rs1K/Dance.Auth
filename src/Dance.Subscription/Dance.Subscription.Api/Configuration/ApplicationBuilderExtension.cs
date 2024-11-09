@@ -1,4 +1,5 @@
-﻿using Dance.Subscription.Api.Middleware;
+﻿using Confluent.Kafka;
+using Dance.Subscription.Api.Middleware;
 using Dance.Subscription.Application.Configuration;
 using Dance.Subscription.infrastructure.Configuration;
 using Dance.Subscription.infrastructure.Options;
@@ -25,7 +26,10 @@ public static class ApplicationBuilderExtension
         var options = builder.Configuration
             .GetSection("MongoDbOptions")
             .Get<MongoDbOptions>();
-        builder.Services.AddInfrastructure(options);
+        var config = builder.Configuration
+            .GetSection("Kafka")
+            .Get<ConsumerConfig>();
+        builder.Services.AddInfrastructure(options, config);
 
         return builder;
     }
