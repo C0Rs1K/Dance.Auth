@@ -26,14 +26,18 @@ public class UserService(UserManager<User> userManager) : IUserService
     public async Task AddRoleAsync(string username, Roles role)
     {
         var user = await userManager.FindByNameAsync(username);
+
         NotFoundException.ThrowIfNull(user);
+
         await userManager.AddToRoleAsync(user, role.GetDescription());
     }
 
     public async Task DeleteUserAsync(string username)
     {
         var user = await userManager.FindByNameAsync(username);
+
         NotFoundException.ThrowIfNull(user);
+
         await userManager.DeleteAsync(user);
     }
 }

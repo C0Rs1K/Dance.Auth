@@ -15,7 +15,7 @@ public class HttpGlobalExceptionHandler(IHostEnvironment environment) : IExcepti
         {
             ValidationException validationException => HandleValidationException(httpContext, validationException),
             BadRequestException badRequestException => HandleBadRequestException(httpContext, badRequestException),
-            UnauthorizedAccessException unauthorizedException => HandleUnauthorizedException(httpContext, unauthorizedException),
+            UnauthorizedException unauthorizedException => HandleUnauthorizedException(httpContext, unauthorizedException),
             NotFoundException notFoundException => HandleNotFoundException(httpContext, notFoundException),
             AlreadyExistException alreadyExistException => HandleAlreadyExistException(httpContext, alreadyExistException),
             _ => HandleError(httpContext, exception)
@@ -50,7 +50,7 @@ public class HttpGlobalExceptionHandler(IHostEnvironment environment) : IExcepti
             _environment.IsDevelopment() ? badHttpRequestException.Message : "Bad request");
     }
 
-    private Task HandleUnauthorizedException(HttpContext context, UnauthorizedAccessException unauthorizedException)
+    private Task HandleUnauthorizedException(HttpContext context, UnauthorizedException unauthorizedException)
     {
         return context.WriteErrorAsync(HttpStatusCode.Unauthorized,
             _environment.IsDevelopment() ? unauthorizedException.Message : "Unauthorized");
