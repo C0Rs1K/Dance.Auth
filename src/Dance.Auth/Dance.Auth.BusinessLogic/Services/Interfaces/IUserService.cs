@@ -5,7 +5,8 @@ namespace Dance.Auth.BusinessLogic.Services.Interfaces;
 
 public interface IUserService
 {
-    IEnumerable<UserResponseDto> GetUsers();
+    Task<IEnumerable<UserResponseDto>> GetUsersAsync();
     Task AddRoleAsync(string username, Roles role);
+    Task RemoveRoleAsync(string username, Roles role);
     Task DeleteUserAsync(string username);
 }

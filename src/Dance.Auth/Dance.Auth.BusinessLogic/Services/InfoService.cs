@@ -15,6 +15,7 @@ public class InfoService(UserManager<User> userManager) : IInfoService
 
         return new UserInfoRequestDto
         {
+            Id = user.Id,
             Name = user.Name,
             Email = user.Email,
             Roles = [..userRoles]

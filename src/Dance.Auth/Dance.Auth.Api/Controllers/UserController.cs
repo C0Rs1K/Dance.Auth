@@ -7,19 +7,19 @@ namespace Dance.Auth.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize(Roles = "Admin")]
+[Authorize]
 public class UserController(IUserService userService) : ControllerBase
 {
     [HttpGet]
-    public IActionResult GetUsers(CancellationToken cancellationToken)
+    public async Task<IActionResult> GetUsersAsync(CancellationToken cancellationToken)
     { 
-        var users = userService.GetUsers();
+        var users = await userService.GetUsersAsync();
 
         return Ok(users);
     }
 
     [HttpDelete]
-    public async Task<IActionResult> DeleteUserAsync(string username, CancellationToken cancellationToken)
+    public async Task<IActionResult> DeleteUserAsync([FromQuery] string username, CancellationToken cancellationToken)
     {
         await userService.DeleteUserAsync(username);
 
@@ -34,4 +34,12 @@ public class UserController(IUserService userService) : ControllerBase
         return Ok();
     }
 
+
+    [HttpPost("RemoveRole")]
+    public async Task<IActionResult> RemoveRoleAsync(string username, Roles role, CancellationToken cancellationToken)
+    {
+        await userService.RemoveRoleAsync(username, role);
+
+        return Ok();
+    }
 }

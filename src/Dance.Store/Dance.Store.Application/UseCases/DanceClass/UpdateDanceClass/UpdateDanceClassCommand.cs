@@ -4,4 +4,4 @@ using MediatR;
 
 namespace Dance.Store.Application.UseCases.DanceClass.UpdateDanceClass;
 
-public record UpdateDanceClassCommand(Guid DanceClassId, DanceClassRequestDto DanceClassRequestDto) : IRequest<DanceClassResponseDto>, IRequest;
+public record UpdateDanceClassCommand(Guid DanceClassId, DanceClassRequestDto DanceClassRequestDto) : IRequest<DanceClassResponseDto>;

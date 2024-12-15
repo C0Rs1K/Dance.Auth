@@ -15,6 +15,7 @@ public class UpdateStudentRegistrationHandler(IStudentRegistrationRepository stu
                 cancellationToken);
         NotFoundException.ThrowIfNull(studentRegistration);
         var studentRegistrationDto = request.StudentRegistrationRequestDto;
+        studentRegistration.Status = null;
         mapper.Map(studentRegistrationDto, studentRegistration);
         studentRegistrationRepository.Update(studentRegistration);
         await studentRegistrationRepository.SaveChangesAsync(cancellationToken);

@@ -35,7 +35,7 @@ public static class BusinessConfigurationExtension
         services.AddScoped<IRegistrationService, RegistrationService>();
         services.AddScoped<IInfoService, InfoService>();
         services.AddScoped<IUserService, UserService>();
-        services.AddScoped<IProduceService, ProduceService>();
+        //services.AddScoped<IProduceService, ProduceService>();
 
         return services;
     }

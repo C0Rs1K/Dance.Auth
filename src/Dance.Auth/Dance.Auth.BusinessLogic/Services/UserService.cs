@@ -10,17 +10,27 @@ namespace Dance.Auth.BusinessLogic.Services;
 
 public class UserService(UserManager<User> userManager) : IUserService
 {
-    public IEnumerable<UserResponseDto> GetUsers()
+    public async Task<IEnumerable<UserResponseDto>> GetUsersAsync()
     {
-        var users = userManager.Users;
+        var users = await userManager.Users.ToListAsync();
 
-        return users.Select(user => new UserResponseDto
+        var userDtos = new List<UserResponseDto>();
+
+        foreach (var user in users)
         {
-            Id = user.Id,
-            Email = user.Email,
-            UserName = user.UserName,
-            Name = user.Name    
-        }).ToList();
+            var roles = await userManager.GetRolesAsync(user);
+
+            userDtos.Add(new UserResponseDto
+            {
+                Id = user.Id,
+                Email = user.Email,
+                UserName = user.UserName,
+                Name = user.Name,
+                Roles = roles.ToList() 
+            });
+        }
+
+        return userDtos;
     }
 
     public async Task AddRoleAsync(string username, Roles role)
@@ -39,5 +49,21 @@ public class UserService(UserManager<User> userManager) : IUserService
         NotFoundException.ThrowIfNull(user);
 
         await userManager.DeleteAsync(user);
+    }
+
+    public async Task RemoveRoleAsync(string username, Roles role)
+    {
+        var user = await userManager.FindByNameAsync(username);
+
+        NotFoundException.ThrowIfNull(user);
+
+        await userManager.RemoveFromRoleAsync(user, role.GetDescription());
+
+        var roles = await userManager.GetRolesAsync(user);
+
+        if (roles.Any() == false)
+        {
+            await userManager.AddToRoleAsync(user, Roles.User.GetDescription());
+        }
     }
 }

@@ -14,6 +14,7 @@ public class UpdateDanceClassHandler(IDanceClassRepository danceClassRepository,
         NotFoundException.ThrowIfNull(danceClass);
         var danceClassDto = request.DanceClassRequestDto;
         mapper.Map(danceClassDto, danceClass);
+        danceClass.Trainer = null;
         danceClassRepository.Update(danceClass);
         await danceClassRepository.SaveChangesAsync(cancellationToken);
 

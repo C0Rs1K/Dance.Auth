@@ -5,6 +5,9 @@ using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 using Dance.Store.Application.UseCases.DanceClass.CreateDanceClass;
 using Dance.Store.Application.Validators;
 using Confluent.Kafka;
+using Dance.Store.Application.UseCases.DanceClass.UpdateDanceClass;
+using Dance.Store.Application.Dtos.ResponseDto;
+using MediatR;
 
 namespace Dance.Store.Application.Configuration;
 
@@ -27,7 +30,7 @@ public static class ApplicationConfigurationExtension
     private static IServiceCollection AddServices(this IServiceCollection services)
     {
         services.AddMediatR(opt =>
-            opt.RegisterServicesFromAssemblyContaining<CreateDanceClassCommand>()
+            opt.RegisterServicesFromAssemblyContaining<UpdateDanceClassHandler>()
         );
 
         return services;
